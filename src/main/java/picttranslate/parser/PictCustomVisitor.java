@@ -42,9 +42,13 @@ public class PictCustomVisitor extends PictBaseVisitor{
     @Override
     public String visitConstraint(PictParser.ConstraintContext ctx) {
         StringBuilder line = new StringBuilder();
-        line.append(visitPredicate(ctx.predicate(0)));
-        line.append(" => ");
-        line.append(visitPredicate(ctx.predicate(1)));
+        if (ctx.iftext() != null){
+            line.append(visitPredicate(ctx.predicate(0)));
+            line.append(" => ");
+            line.append(visitPredicate(ctx.predicate(1)));
+        }else {
+            line.append(visitPredicate(ctx.predicate(0)));
+        }
         return line.toString();
     }
 
@@ -79,14 +83,20 @@ public class PictCustomVisitor extends PictBaseVisitor{
             sb.append(visitRelation(ctx.relation()));
             sb.append(visitValue(ctx.value(1)));
         } else {
+            String mathOperator, logicOperator;
+            if (ctx.inClause() != null){
+                mathOperator = "=" ;
+                logicOperator = " OR ";
+            } else {
+                mathOperator = "!=" ;
+                logicOperator = " AND ";
+            }
             String param = visitValue(ctx.value(0));
-            ctx.value().remove(0);
             sb.append("(");
-            sb.append(param).append("=").append(visitValue(ctx.value(0)));
-            ctx.value().remove(0);
-            for (PictParser.ValueContext valCtx : ctx.value()) {
-                sb.append(" OR ");
-                sb.append(param).append("=").append(visitValue(valCtx));
+            sb.append(param).append(mathOperator).append(visitValue(ctx.value(1)));
+            for (int i = 2; i < ctx.value().size(); i++) {
+                sb.append(logicOperator);
+                sb.append(param).append(mathOperator).append(visitValue(ctx.value(i)));
             }
             sb.append(")");
         }

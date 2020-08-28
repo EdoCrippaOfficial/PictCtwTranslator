@@ -1,4 +1,4 @@
-// Generated from /home/edo/Documents/PictTranslate/src/main/java/server/parser/Pict.g4 by ANTLR 4.8
+// Generated from /home/edo/Documents/PictTranslate/src/main/java/picttranslate/parser/Pict.g4 by ANTLR 4.8
 package picttranslate.parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -64,6 +64,18 @@ public interface PictVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLogicalOperator(PictParser.LogicalOperatorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PictParser#inClause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInClause(PictParser.InClauseContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PictParser#notInClause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNotInClause(PictParser.NotInClauseContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link PictParser#iftext}.
 	 * @param ctx the parse tree

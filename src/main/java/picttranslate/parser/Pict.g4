@@ -4,13 +4,15 @@ start : (parameter)+ (constraint)* ;
 
 parameter : value (':'|',') value (',' value)* ;
 
-constraint : iftext predicate thentext predicate ';';
+constraint : ((iftext predicate thentext predicate) | predicate)';';
 
 predicate : clause | (clause logicalOperator predicate);
 
 clause : term | '(' predicate ')';
 
-term : value relation value | value ('IN'|'in') '{' value (',' value)* '}';
+term : value relation value
+     | value inClause '{' value (',' value)* '}'
+     | value notInClause '{' value (',' value)* '}';
 
 value : TESTO | '"' TESTO '"';
 
@@ -18,11 +20,14 @@ relation : '=' | '<>' | '>' | '>=' | '<' | '<=';
 
 logicalOperator : 'and' | 'or';
 
-iftext : 'if';
-thentext : 'then';
+inClause : ('IN'|'in');
+notInClause : ('NOT IN'|'not in');
+
+iftext : ('if'|'IF');
+thentext : ('then'|'THEN');
 
 TESTO
-    :  [a-zA-Z0-9-]+
+    :  [a-zA-Z0-9\-!@$%^&*~]+
     ;
 
 

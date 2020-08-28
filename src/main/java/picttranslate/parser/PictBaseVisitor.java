@@ -1,4 +1,4 @@
-// Generated from /home/edo/Documents/PictTranslate/src/main/java/server/parser/Pict.g4 by ANTLR 4.8
+// Generated from /home/edo/Documents/PictTranslate/src/main/java/picttranslate/parser/Pict.g4 by ANTLR 4.8
 package picttranslate.parser;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -74,6 +74,20 @@ public class PictBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements P
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitLogicalOperator(PictParser.LogicalOperatorContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitInClause(PictParser.InClauseContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitNotInClause(PictParser.NotInClauseContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

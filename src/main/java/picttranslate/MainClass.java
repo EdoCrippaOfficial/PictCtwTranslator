@@ -24,6 +24,7 @@ public class MainClass {
                 String[] filePath = f.getAbsolutePath().split("/");
                 String fileNameWithExt = filePath[filePath.length - 1];
                 String fileName = fileNameWithExt.substring(0, fileNameWithExt.length() - 4);
+                System.out.println("---- " + fileName);
                 try{
                     BufferedReader reader = new BufferedReader(new FileReader(f));
                     StringBuilder stringBuilder = new StringBuilder();
@@ -38,7 +39,9 @@ public class MainClass {
                     String inputText = stringBuilder.toString();
                     inputText = inputText.replace("[", " ")
                             .replace("]", " ")
-                            .replace("|", ", ");
+                            .replace(".", "")
+                            .replace("|", ", ")
+                            .replace("_", "-");
 
                     CharStream input = CharStreams.fromString(inputText);
                     PictLexer lexer = new PictLexer(input);
@@ -55,13 +58,15 @@ public class MainClass {
                     System.out.println(fileName + " translated successfully!");
 
                 }catch (Exception e){
-                    e.printStackTrace();
+                    System.err.println(fileName + " not translated");
                 }
             }
         }
     }
 
 }
+
+//throw new ParseCancellationException("Error parsing the text");
 
 
 
