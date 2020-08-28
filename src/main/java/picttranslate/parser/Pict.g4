@@ -2,7 +2,7 @@ grammar Pict;
 
 start : (parameter)+ (constraint)* ;
 
-parameter : value (':'|',') value (',' value)* ;
+parameter : value (':'|',') value (',' value)*;
 
 constraint : ((iftext predicate thentext predicate) | predicate)';';
 
@@ -14,7 +14,7 @@ term : value relation value
      | value inClause '{' value (',' value)* '}'
      | value notInClause '{' value (',' value)* '}';
 
-value : TESTO | '"' TESTO '"';
+value : (TESTO)+ | '"' value '"' | '(' value ')';
 
 relation : '=' | '<>' | '>' | '>=' | '<' | '<=';
 

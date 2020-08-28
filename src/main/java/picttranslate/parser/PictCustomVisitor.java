@@ -1,5 +1,7 @@
 package picttranslate.parser;
 
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 import java.util.List;
 
 public class PictCustomVisitor extends PictBaseVisitor{
@@ -36,7 +38,11 @@ public class PictCustomVisitor extends PictBaseVisitor{
 
     @Override
     public String visitValue(PictParser.ValueContext ctx) {
-        return ctx.TESTO().getText();
+        StringBuilder sb = new StringBuilder();
+        for (TerminalNode textNode : ctx.TESTO()) {
+            sb.append(textNode.getText());
+        }
+        return sb.toString();
     }
 
     @Override

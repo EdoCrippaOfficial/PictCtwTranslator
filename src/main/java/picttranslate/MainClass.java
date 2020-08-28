@@ -58,7 +58,7 @@ public class MainClass {
                     System.out.println(fileName + " translated successfully!");
 
                 }catch (Exception e){
-                    System.err.println(fileName + " not translated");
+                    System.out.println(fileName + " not translated");
                 }
             }
         }

@@ -405,16 +405,15 @@ public class PictParser extends Parser {
 		try {
 			setState(69);
 			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case T__7:
-			case TESTO:
+			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(64);
 				term();
 				}
 				break;
-			case T__3:
+			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(65);
@@ -425,8 +424,6 @@ public class PictParser extends Parser {
 				match(T__4);
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -562,7 +559,13 @@ public class PictParser extends Parser {
 	}
 
 	public static class ValueContext extends ParserRuleContext {
-		public TerminalNode TESTO() { return getToken(PictParser.TESTO, 0); }
+		public List<TerminalNode> TESTO() { return getTokens(PictParser.TESTO); }
+		public TerminalNode TESTO(int i) {
+			return getToken(PictParser.TESTO, i);
+		}
+		public ValueContext value() {
+			return getRuleContext(ValueContext.class,0);
+		}
 		public ValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -578,25 +581,55 @@ public class PictParser extends Parser {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_value);
 		try {
-			setState(107);
+			int _alt;
+			setState(116);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case TESTO:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(103);
-				match(TESTO);
+				setState(104); 
+				_errHandler.sync(this);
+				_alt = 1;
+				do {
+					switch (_alt) {
+					case 1:
+						{
+						{
+						setState(103);
+						match(TESTO);
+						}
+						}
+						break;
+					default:
+						throw new NoViableAltException(this);
+					}
+					setState(106); 
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				}
 				break;
 			case T__7:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(104);
+				setState(108);
 				match(T__7);
-				setState(105);
-				match(TESTO);
-				setState(106);
+				setState(109);
+				value();
+				setState(110);
 				match(T__7);
+				}
+				break;
+			case T__3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(112);
+				match(T__3);
+				setState(113);
+				value();
+				setState(114);
+				match(T__4);
 				}
 				break;
 			default:
@@ -633,7 +666,7 @@ public class PictParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(109);
+			setState(118);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -675,7 +708,7 @@ public class PictParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(111);
+			setState(120);
 			_la = _input.LA(1);
 			if ( !(_la==T__14 || _la==T__15) ) {
 			_errHandler.recoverInline(this);
@@ -717,7 +750,7 @@ public class PictParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(113);
+			setState(122);
 			_la = _input.LA(1);
 			if ( !(_la==T__16 || _la==T__17) ) {
 			_errHandler.recoverInline(this);
@@ -759,7 +792,7 @@ public class PictParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(115);
+			setState(124);
 			_la = _input.LA(1);
 			if ( !(_la==T__18 || _la==T__19) ) {
 			_errHandler.recoverInline(this);
@@ -801,7 +834,7 @@ public class PictParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(117);
+			setState(126);
 			_la = _input.LA(1);
 			if ( !(_la==T__20 || _la==T__21) ) {
 			_errHandler.recoverInline(this);
@@ -843,7 +876,7 @@ public class PictParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(119);
+			setState(128);
 			_la = _input.LA(1);
 			if ( !(_la==T__22 || _la==T__23) ) {
 			_errHandler.recoverInline(this);
@@ -867,36 +900,39 @@ public class PictParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35|\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
-		"\f\t\f\4\r\t\r\4\16\t\16\3\2\6\2\36\n\2\r\2\16\2\37\3\2\7\2#\n\2\f\2\16"+
-		"\2&\13\2\3\3\3\3\3\3\3\3\3\3\7\3-\n\3\f\3\16\3\60\13\3\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\5\48\n\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\5\5A\n\5\3\6\3\6\3\6\3\6"+
-		"\3\6\5\6H\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7T\n\7\f\7\16"+
-		"\7W\13\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7a\n\7\f\7\16\7d\13\7\3\7\3"+
-		"\7\5\7h\n\7\3\b\3\b\3\b\3\b\5\bn\n\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f"+
-		"\3\r\3\r\3\16\3\16\3\16\2\2\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\t\3"+
-		"\2\3\4\3\2\13\20\3\2\21\22\3\2\23\24\3\2\25\26\3\2\27\30\3\2\31\32\2y"+
-		"\2\35\3\2\2\2\4\'\3\2\2\2\6\67\3\2\2\2\b@\3\2\2\2\nG\3\2\2\2\fg\3\2\2"+
-		"\2\16m\3\2\2\2\20o\3\2\2\2\22q\3\2\2\2\24s\3\2\2\2\26u\3\2\2\2\30w\3\2"+
-		"\2\2\32y\3\2\2\2\34\36\5\4\3\2\35\34\3\2\2\2\36\37\3\2\2\2\37\35\3\2\2"+
-		"\2\37 \3\2\2\2 $\3\2\2\2!#\5\6\4\2\"!\3\2\2\2#&\3\2\2\2$\"\3\2\2\2$%\3"+
-		"\2\2\2%\3\3\2\2\2&$\3\2\2\2\'(\5\16\b\2()\t\2\2\2).\5\16\b\2*+\7\4\2\2"+
-		"+-\5\16\b\2,*\3\2\2\2-\60\3\2\2\2.,\3\2\2\2./\3\2\2\2/\5\3\2\2\2\60.\3"+
-		"\2\2\2\61\62\5\30\r\2\62\63\5\b\5\2\63\64\5\32\16\2\64\65\5\b\5\2\658"+
-		"\3\2\2\2\668\5\b\5\2\67\61\3\2\2\2\67\66\3\2\2\289\3\2\2\29:\7\5\2\2:"+
-		"\7\3\2\2\2;A\5\n\6\2<=\5\n\6\2=>\5\22\n\2>?\5\b\5\2?A\3\2\2\2@;\3\2\2"+
-		"\2@<\3\2\2\2A\t\3\2\2\2BH\5\f\7\2CD\7\6\2\2DE\5\b\5\2EF\7\7\2\2FH\3\2"+
-		"\2\2GB\3\2\2\2GC\3\2\2\2H\13\3\2\2\2IJ\5\16\b\2JK\5\20\t\2KL\5\16\b\2"+
-		"Lh\3\2\2\2MN\5\16\b\2NO\5\24\13\2OP\7\b\2\2PU\5\16\b\2QR\7\4\2\2RT\5\16"+
-		"\b\2SQ\3\2\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2VX\3\2\2\2WU\3\2\2\2XY\7\t"+
-		"\2\2Yh\3\2\2\2Z[\5\16\b\2[\\\5\26\f\2\\]\7\b\2\2]b\5\16\b\2^_\7\4\2\2"+
-		"_a\5\16\b\2`^\3\2\2\2ad\3\2\2\2b`\3\2\2\2bc\3\2\2\2ce\3\2\2\2db\3\2\2"+
-		"\2ef\7\t\2\2fh\3\2\2\2gI\3\2\2\2gM\3\2\2\2gZ\3\2\2\2h\r\3\2\2\2in\7\33"+
-		"\2\2jk\7\n\2\2kl\7\33\2\2ln\7\n\2\2mi\3\2\2\2mj\3\2\2\2n\17\3\2\2\2op"+
-		"\t\3\2\2p\21\3\2\2\2qr\t\4\2\2r\23\3\2\2\2st\t\5\2\2t\25\3\2\2\2uv\t\6"+
-		"\2\2v\27\3\2\2\2wx\t\7\2\2x\31\3\2\2\2yz\t\b\2\2z\33\3\2\2\2\f\37$.\67"+
-		"@GUbgm";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35\u0085\4\2\t\2"+
+		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
+		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\3\2\6\2\36\n\2\r\2\16\2\37\3\2\7\2#\n"+
+		"\2\f\2\16\2&\13\2\3\3\3\3\3\3\3\3\3\3\7\3-\n\3\f\3\16\3\60\13\3\3\4\3"+
+		"\4\3\4\3\4\3\4\3\4\5\48\n\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\5\5A\n\5\3\6\3"+
+		"\6\3\6\3\6\3\6\5\6H\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7T\n"+
+		"\7\f\7\16\7W\13\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7a\n\7\f\7\16\7d\13"+
+		"\7\3\7\3\7\5\7h\n\7\3\b\6\bk\n\b\r\b\16\bl\3\b\3\b\3\b\3\b\3\b\3\b\3\b"+
+		"\3\b\5\bw\n\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16\3\16"+
+		"\2\2\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\t\3\2\3\4\3\2\13\20\3\2\21"+
+		"\22\3\2\23\24\3\2\25\26\3\2\27\30\3\2\31\32\2\u0084\2\35\3\2\2\2\4\'\3"+
+		"\2\2\2\6\67\3\2\2\2\b@\3\2\2\2\nG\3\2\2\2\fg\3\2\2\2\16v\3\2\2\2\20x\3"+
+		"\2\2\2\22z\3\2\2\2\24|\3\2\2\2\26~\3\2\2\2\30\u0080\3\2\2\2\32\u0082\3"+
+		"\2\2\2\34\36\5\4\3\2\35\34\3\2\2\2\36\37\3\2\2\2\37\35\3\2\2\2\37 \3\2"+
+		"\2\2 $\3\2\2\2!#\5\6\4\2\"!\3\2\2\2#&\3\2\2\2$\"\3\2\2\2$%\3\2\2\2%\3"+
+		"\3\2\2\2&$\3\2\2\2\'(\5\16\b\2()\t\2\2\2).\5\16\b\2*+\7\4\2\2+-\5\16\b"+
+		"\2,*\3\2\2\2-\60\3\2\2\2.,\3\2\2\2./\3\2\2\2/\5\3\2\2\2\60.\3\2\2\2\61"+
+		"\62\5\30\r\2\62\63\5\b\5\2\63\64\5\32\16\2\64\65\5\b\5\2\658\3\2\2\2\66"+
+		"8\5\b\5\2\67\61\3\2\2\2\67\66\3\2\2\289\3\2\2\29:\7\5\2\2:\7\3\2\2\2;"+
+		"A\5\n\6\2<=\5\n\6\2=>\5\22\n\2>?\5\b\5\2?A\3\2\2\2@;\3\2\2\2@<\3\2\2\2"+
+		"A\t\3\2\2\2BH\5\f\7\2CD\7\6\2\2DE\5\b\5\2EF\7\7\2\2FH\3\2\2\2GB\3\2\2"+
+		"\2GC\3\2\2\2H\13\3\2\2\2IJ\5\16\b\2JK\5\20\t\2KL\5\16\b\2Lh\3\2\2\2MN"+
+		"\5\16\b\2NO\5\24\13\2OP\7\b\2\2PU\5\16\b\2QR\7\4\2\2RT\5\16\b\2SQ\3\2"+
+		"\2\2TW\3\2\2\2US\3\2\2\2UV\3\2\2\2VX\3\2\2\2WU\3\2\2\2XY\7\t\2\2Yh\3\2"+
+		"\2\2Z[\5\16\b\2[\\\5\26\f\2\\]\7\b\2\2]b\5\16\b\2^_\7\4\2\2_a\5\16\b\2"+
+		"`^\3\2\2\2ad\3\2\2\2b`\3\2\2\2bc\3\2\2\2ce\3\2\2\2db\3\2\2\2ef\7\t\2\2"+
+		"fh\3\2\2\2gI\3\2\2\2gM\3\2\2\2gZ\3\2\2\2h\r\3\2\2\2ik\7\33\2\2ji\3\2\2"+
+		"\2kl\3\2\2\2lj\3\2\2\2lm\3\2\2\2mw\3\2\2\2no\7\n\2\2op\5\16\b\2pq\7\n"+
+		"\2\2qw\3\2\2\2rs\7\6\2\2st\5\16\b\2tu\7\7\2\2uw\3\2\2\2vj\3\2\2\2vn\3"+
+		"\2\2\2vr\3\2\2\2w\17\3\2\2\2xy\t\3\2\2y\21\3\2\2\2z{\t\4\2\2{\23\3\2\2"+
+		"\2|}\t\5\2\2}\25\3\2\2\2~\177\t\6\2\2\177\27\3\2\2\2\u0080\u0081\t\7\2"+
+		"\2\u0081\31\3\2\2\2\u0082\u0083\t\b\2\2\u0083\33\3\2\2\2\r\37$.\67@GU"+
+		"bglv";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
