@@ -1,8 +1,12 @@
 grammar Pict;
 
-start : (parameter)+ (constraint)* ;
+start : (parameter )+ (constraint)* ;
 
-parameter : value (':'|',') value (',' value)*;
+parameter : value (':'|',') paramValue (',' paramValue)* | submodel;
+
+paramValue : value | '<' reusedValue '>' | value '|' aliasValue;
+
+submodel : '{' value (',' value)* '} @' value;
 
 constraint : ((iftext predicate thentext predicate) | predicate)';';
 
@@ -15,6 +19,8 @@ term : value relation value
      | value notInClause '{' value (',' value)* '}';
 
 value : (TESTO)+ | '"' value '"' | '(' value ')';
+reusedValue : value;
+aliasValue : value;
 
 relation : '=' | '<>' | '>' | '>=' | '<' | '<=';
 
