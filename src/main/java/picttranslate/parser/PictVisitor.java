@@ -23,6 +23,18 @@ public interface PictVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParameter(PictParser.ParameterContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PictParser#paramValue}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParamValue(PictParser.ParamValueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PictParser#submodel}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubmodel(PictParser.SubmodelContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PictParser#constraint}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -52,6 +64,18 @@ public interface PictVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValue(PictParser.ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PictParser#reusedValue}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReusedValue(PictParser.ReusedValueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PictParser#aliasValue}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAliasValue(PictParser.AliasValueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link PictParser#relation}.
 	 * @param ctx the parse tree

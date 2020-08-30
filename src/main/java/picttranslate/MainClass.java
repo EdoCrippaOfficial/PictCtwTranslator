@@ -30,7 +30,12 @@ public class MainClass {
                     StringBuilder stringBuilder = new StringBuilder();
                     String line;
                     String ls = System.getProperty("line.separator");
+                    boolean parameters = true;
                     while ((line = reader.readLine()) != null) {
+                        if (line.startsWith("if") || line.startsWith("IF") || line.startsWith("{"))
+                            parameters = false;
+                        if (parameters && !line.contains(":"))
+                            line = line.replaceFirst(",", ":");
                         stringBuilder.append(line);
                         stringBuilder.append(ls);
                     }
@@ -40,6 +45,7 @@ public class MainClass {
                     inputText = inputText.replace("[", " ")
                             .replace("]", " ")
                             .replace(".", "")
+                            .replace("~", "")
                             .replace("|", ", ")
                             .replace("_", "-");
 

@@ -2,9 +2,15 @@ package picttranslate.parser;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PictCustomVisitor extends PictBaseVisitor{
+
+    //  alias, parametro
+    HashMap<String, String> aliases = new HashMap<>();
+    HashMap<String, List<String>> parameters = new HashMap<>();
 
     @Override
     public String visitStart(PictParser.StartContext ctx) {
@@ -25,24 +31,55 @@ public class PictCustomVisitor extends PictBaseVisitor{
 
     @Override
     public String visitParameter(PictParser.ParameterContext ctx) {
-        List<PictParser.ValueContext> values = ctx.value();
+        if (ctx.submodel() != null)
+            return "";
         StringBuilder line = new StringBuilder();
-        line.append(visitValue(values.get(0))).append(" : { ");
-        values.remove(0);
-        for (PictParser.ValueContext valCtx : values) {
-            line.append(visitValue(valCtx)).append(" ");
+        String paramName = visitValue(ctx.value());
+        line.append(paramName).append(" : { ");
+        List<PictParser.ParamValueContext> values = ctx.paramValue();
+        List<String> stringValues = new ArrayList<>();
+        for (PictParser.ParamValueContext valCtx : values) {
+            String s = visitParamValue(valCtx);
+            stringValues.add(s);
+            line.append(s).append(" ");
         }
+        parameters.put(paramName, stringValues);
         line.append("};");
         return line.toString();
     }
 
     @Override
+    public String visitParamValue(PictParser.ParamValueContext ctx) {
+        if (ctx.aliasValue() != null)
+            aliases.put(visitValue(ctx.aliasValue().value()), visitValue(ctx.value()));
+        if (ctx.reusedValue() == null)
+            return visitValue(ctx.value());
+        else{
+            String reusedParamName = visitValue(ctx.reusedValue().value());
+            if (parameters.containsKey(reusedParamName)){
+                StringBuilder sb = new StringBuilder();
+                for (String name : parameters.get(reusedParamName)) {
+                    sb.append(name).append(" ");
+                }
+                String result = sb.toString();
+                return result.substring(0, result.length()-1);
+            }
+        }
+        return "";
+    }
+
+    @Override
     public String visitValue(PictParser.ValueContext ctx) {
+        if (ctx.value() != null)
+            return visitValue(ctx.value());
         StringBuilder sb = new StringBuilder();
         for (TerminalNode textNode : ctx.TESTO()) {
             sb.append(textNode.getText());
         }
-        return sb.toString();
+        String value = sb.toString();
+        if (aliases.containsKey(value))
+            value = aliases.get(value);
+        return value;
     }
 
     @Override
@@ -118,7 +155,7 @@ public class PictCustomVisitor extends PictBaseVisitor{
 
     @Override
     public Object visitLogicalOperator(PictParser.LogicalOperatorContext ctx) {
-        if (ctx.getText().equals("and"))
+        if (ctx.getText().equals("and") || ctx.getText().equals("AND"))
             return "AND";
         else
             return "OR";

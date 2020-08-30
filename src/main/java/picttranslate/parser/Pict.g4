@@ -2,13 +2,13 @@ grammar Pict;
 
 start : (parameter )+ (constraint)* ;
 
-parameter : value (':'|',') paramValue (',' paramValue)* | submodel;
+parameter : value (':') paramValue (',' paramValue)* | submodel;
 
 paramValue : value | '<' reusedValue '>' | value '|' aliasValue;
 
-submodel : '{' value (',' value)* '} @' value;
+submodel : '{' value (',' value)* '}' '@' value;
 
-constraint : ((iftext predicate thentext predicate) | predicate)';';
+constraint : ((iftext predicate thentext predicate) | predicate) ';';
 
 predicate : clause | (clause logicalOperator predicate);
 
@@ -24,7 +24,7 @@ aliasValue : value;
 
 relation : '=' | '<>' | '>' | '>=' | '<' | '<=';
 
-logicalOperator : 'and' | 'or';
+logicalOperator : 'and' | 'AND' | 'or' | 'OR';
 
 inClause : ('IN'|'in');
 notInClause : ('NOT IN'|'not in');
@@ -33,7 +33,7 @@ iftext : ('if'|'IF');
 thentext : ('then'|'THEN');
 
 TESTO
-    :  [a-zA-Z0-9\-!@$%^&*~]+
+    :  [a-zA-Z0-9\-!@$%^&*]+
     ;
 
 
