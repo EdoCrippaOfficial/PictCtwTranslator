@@ -3,7 +3,7 @@ Model real034
 Parameters: 
 ServerType : { SameMachineSameProc SameMachineDiffProcs Win2kAdvancedServer XPPro NetServer };
 ClientType : { Win2kServer XPPro NetServer };
-TokenAvailability : { None UsernamePassword-Get UsernamePassword-Set WinAuth-Get WinAuth-Set X509-Get X509-Set All-Get All-Set };
+TokenAvailability : { None UsernamePasswordGet UsernamePasswordSet WinAuthGet WinAuthSet X509Get X509Set AllGet AllSet };
 SignatureRequirements : { None UsernamePassword WinAuth X509 Any All };
 TestMethodName : { Get Set GetNegative };
 EncryptionOnServer : { None UsernamePassword WinAuth X509 };
@@ -13,15 +13,15 @@ AccountType : { ClientRegularUserServerAdministrator BothAdministrator ClientReg
 
 Constraints: 
 # (TokenAvailability=None OR SignatureRequirements=None) => TestMethodName=GetNegative #
-# (TokenAvailability=UsernamePassword-Get OR TokenAvailability=WinAuth-Get OR TokenAvailability=X509-Get OR TokenAvailability=All-Get) => (TestMethodName=Get OR TestMethodName=GetNegative) #
+# (TokenAvailability=UsernamePasswordGet OR TokenAvailability=WinAuthGet OR TokenAvailability=X509Get OR TokenAvailability=AllGet) => (TestMethodName=Get OR TestMethodName=GetNegative) #
 # EncryptionOnServer=UsernamePassword => (SignatureRequirements=Any OR SignatureRequirements=UsernamePassword OR SignatureRequirements=All) #
 # EncryptionOnServer=WinAuth => (SignatureRequirements=Any OR SignatureRequirements=WinAuth OR SignatureRequirements=All) #
-# (SignatureRequirements=UsernamePassword OR EncryptionOnServer=UsernamePassword) => (TokenAvailability=UsernamePassword-Set OR TokenAvailability=UsernamePassword-Get OR TokenAvailability=All-Get OR TokenAvailability=All-Set) #
-# (SignatureRequirements=WinAuth OR EncryptionOnServer=WinAuth) => (TokenAvailability=WinAuth-Set OR TokenAvailability=WinAuth-Get OR TokenAvailability=All-Get OR TokenAvailability=All-Set) #
-# SignatureRequirements=X509 => (TokenAvailability=X509-Set OR TokenAvailability=X509-Get OR TokenAvailability=All-Get OR TokenAvailability=All-Set) #
+# (SignatureRequirements=UsernamePassword OR EncryptionOnServer=UsernamePassword) => (TokenAvailability=UsernamePasswordSet OR TokenAvailability=UsernamePasswordGet OR TokenAvailability=AllGet OR TokenAvailability=AllSet) #
+# (SignatureRequirements=WinAuth OR EncryptionOnServer=WinAuth) => (TokenAvailability=WinAuthSet OR TokenAvailability=WinAuthGet OR TokenAvailability=AllGet OR TokenAvailability=AllSet) #
+# SignatureRequirements=X509 => (TokenAvailability=X509Set OR TokenAvailability=X509Get OR TokenAvailability=AllGet OR TokenAvailability=AllSet) #
 # SignatureRequirements=Any => TokenAvailability!=None #
-# SignatureRequirements=All => (TokenAvailability=All-Get OR TokenAvailability=All-Set) #
+# SignatureRequirements=All => (TokenAvailability=AllGet OR TokenAvailability=AllSet) #
 # (SignatureRequirements=All OR SignatureRequirements=None) => PermissionsTokenIssuance=False #
 # (CommunicationsStyle=XProc) => (ServerType=SameMachineDiffProcs OR ServerType=SameMachineSameProc) #
 # (CommunicationsStyle=InProc OR CommunicationsStyle=RoutedInProc) => (ServerType=SameMachineSameProc) #
-# (ServerType=SameMachineSameProc AND (TokenAvailability=WinAuth-Get OR TokenAvailability=WinAuth-Set OR TokenAvailability=All-Get OR TokenAvailability=All-Set)) => AccountType=BothAdministrator #
+# (ServerType=SameMachineSameProc AND (TokenAvailability=WinAuthGet OR TokenAvailability=WinAuthSet OR TokenAvailability=AllGet OR TokenAvailability=AllSet)) => AccountType=BothAdministrator #

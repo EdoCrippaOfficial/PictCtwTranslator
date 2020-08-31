@@ -1,7 +1,7 @@
 Model real008
 
 Parameters: 
-CPU : { Pent PentPro PII PIII P4 IA-64 };
+CPU : { Pent PentPro PII PIII P4 IA64 };
 CPUS : { Single Dual Quad };
 RAM : { 16MB 32MB 64MB 128MB 256MB 512MB };
 OS : { Win98 NT4 Win2K WinXP };

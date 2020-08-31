@@ -34,7 +34,7 @@ iftext : ('if'|'IF');
 thentext : ('then'|'THEN');
 
 TESTO
-    :  [a-zA-Z0-9\-!@$%^&*]+
+    :  [a-zA-Z0-9!@$%^&*]+
     ;
 
 

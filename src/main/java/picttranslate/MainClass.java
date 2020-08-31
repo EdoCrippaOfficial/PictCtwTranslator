@@ -47,7 +47,8 @@ public class MainClass {
                             .replace(".", "")
                             .replace("~", "")
                             .replace("|", ", ")
-                            .replace("_", "-");
+                            .replace("_", "")
+                            .replace("-", "");
 
                     CharStream input = CharStreams.fromString(inputText);
                     PictLexer lexer = new PictLexer(input);
