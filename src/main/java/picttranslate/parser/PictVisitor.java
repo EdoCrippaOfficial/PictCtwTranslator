@@ -65,6 +65,12 @@ public interface PictVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitValue(PictParser.ValueContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PictParser#valueText}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValueText(PictParser.ValueTextContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PictParser#reusedValue}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -1,0 +1,15 @@
+Model real010
+
+Parameters: 
+SKU : { Pro Srv ADS DTC WP };
+SP : { Gold SP1 SP2 };
+Encrypt : { low high };
+IE : { 501 501SP1 501SP2 55 55SP1 55SP2 60 };
+MUI : { MUI noMUI };
+IIS : { PWS5 IIS5 noIIS };
+
+Constraints: 
+# SP=SP2 => Encrypt=high #
+# IIS=PWS5 => SKU=Pro #
+# IIS=IIS5 => SKU!=Pro #
+# SP=SP2 => IE>=501SP2 #

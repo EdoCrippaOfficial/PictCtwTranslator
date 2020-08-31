@@ -80,6 +80,13 @@ public class PictBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements P
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitValueText(PictParser.ValueTextContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitReusedValue(PictParser.ReusedValueContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

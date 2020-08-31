@@ -1,0 +1,12 @@
+Model real036
+
+Parameters: 
+OS-1 : { Win2000 WinXP };
+SKU-1 : { Professional Server Datacenter WinPowered };
+LANG-1 : { EN DE };
+OS-2 : { Win2000 WinXP };
+SKU-2 : { Professional Server Datecenter };
+LANG-2 : { EN DE };
+
+Constraints: 
+# (OS-1!=OS-2 AND (SKU-1!=SKU-2 AND LANG-1!=LANG-2)) #

@@ -18,7 +18,8 @@ term : value relation value
      | value inClause '{' value (',' value)* '}'
      | value notInClause '{' value (',' value)* '}';
 
-value : (TESTO)+ | '"' value '"' | '(' value ')';
+value : valueText+;
+valueText: TESTO | '"' TESTO+ '"' | '(' TESTO+ ')';
 reusedValue : value;
 aliasValue : value;
 

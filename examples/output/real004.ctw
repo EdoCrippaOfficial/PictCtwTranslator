@@ -1,0 +1,11 @@
+Model real004
+
+Parameters: 
+BLD-S : { SP 2195 -SP WinXP };
+SKU-S : { Svr Ads DTC WP };
+LNG-S : { EN DE };
+BLD-C : { SP 2195 -SP WinXP };
+SKU-C : { Pro Svr Ads DTC WP };
+LNG-C : { EN DE };
+
+Constraints: 

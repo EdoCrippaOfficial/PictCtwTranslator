@@ -1,0 +1,14 @@
+Model real009
+
+Parameters: 
+SRV-BLD : { SP 2195 -SP WinXP };
+SRV-SKU : { Svr Ads DTC WP };
+SRV-LNG : { EN DE };
+CLI-BLD : { SP 2195 -SP WinXP };
+CLI-SKU : { Pro Svr Ads DTC WP };
+CLI-LNG : { EN DE };
+
+Constraints: 
+# SRV-LNG!=EN => SRV-SKU!=WP #
+# CLI-LNG!=EN => CLI-SKU!=WP #
+# (SRV-BLD=WinXP OR SRV-BLD=2195) => (CLI-BLD=SP OR CLI-BLD=-SP) #

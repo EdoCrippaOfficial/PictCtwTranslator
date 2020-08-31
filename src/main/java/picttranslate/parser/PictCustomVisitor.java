@@ -70,16 +70,23 @@ public class PictCustomVisitor extends PictBaseVisitor{
 
     @Override
     public String visitValue(PictParser.ValueContext ctx) {
-        if (ctx.value() != null)
-            return visitValue(ctx.value());
         StringBuilder sb = new StringBuilder();
-        for (TerminalNode textNode : ctx.TESTO()) {
-            sb.append(textNode.getText());
+        for (PictParser.ValueTextContext textVal : ctx.valueText()){
+            sb.append(visitValueText(textVal));
         }
         String value = sb.toString();
         if (aliases.containsKey(value))
             value = aliases.get(value);
         return value;
+    }
+
+    @Override
+    public String visitValueText(PictParser.ValueTextContext ctx) {
+        StringBuilder sb = new StringBuilder();
+        for (TerminalNode text : ctx.TESTO()) {
+            sb.append(text.getText());
+        }
+        return sb.toString();
     }
 
     @Override

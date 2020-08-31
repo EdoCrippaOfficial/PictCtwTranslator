@@ -1,0 +1,20 @@
+Model real038
+
+Parameters: 
+DC-OS : { W2K3 W2K };
+FW-OS : { W2K3 W2K };
+LangF : { Eng Ger };
+FW-DomE : { Domain WG };
+IP-RoutB : { Yes No };
+NLB : { Yes No };
+HardD : { Yes No };
+
+
+
+
+
+
+
+Constraints: 
+# FW-OS=W2K => HardD=No #
+# FW-OS=W2K => NLB=No #
