@@ -174,7 +174,7 @@ public class PictParser extends Parser {
 		catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
+			throw new ParseCancellationException("Error parsing the text");
 		}
 		finally {
 			exitRule();

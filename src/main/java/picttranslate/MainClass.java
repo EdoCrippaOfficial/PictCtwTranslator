@@ -1,12 +1,5 @@
 package picttranslate;
 
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import picttranslate.parser.PictCustomVisitor;
-import picttranslate.parser.PictLexer;
-import picttranslate.parser.PictParser;
-
 import java.io.*;
 
 public class MainClass {
@@ -26,36 +19,8 @@ public class MainClass {
                 String fileName = fileNameWithExt.substring(0, fileNameWithExt.length() - 4);
                 System.out.println("---- " + fileName);
                 try{
-                    BufferedReader reader = new BufferedReader(new FileReader(f));
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
-                    String ls = System.getProperty("line.separator");
-                    boolean parameters = true;
-                    while ((line = reader.readLine()) != null) {
-                        if (line.startsWith("if") || line.startsWith("IF") || line.startsWith("{"))
-                            parameters = false;
-                        if (parameters && !line.contains(":"))
-                            line = line.replaceFirst(",", ":");
-                        stringBuilder.append(line);
-                        stringBuilder.append(ls);
-                    }
-                    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-                    reader.close();
-                    String inputText = stringBuilder.toString();
-                    inputText = inputText.replace("[", " ")
-                            .replace("]", " ")
-                            .replace(".", "")
-                            .replace("~", "")
-                            .replace("|", ", ")
-                            .replace("_", "")
-                            .replace("-", "");
-
-                    CharStream input = CharStreams.fromString(inputText);
-                    PictLexer lexer = new PictLexer(input);
-                    PictParser parser = new PictParser(new CommonTokenStream(lexer));
-                    PictCustomVisitor visitor = new PictCustomVisitor();
-                    String s = visitor.visit(parser.start()).toString();
-                    s = "Model " + fileName + "\n\n" + s;
+                    PictTranslator translator = new PictTranslator();
+                    String s = translator.translate(f, fileName);
 
                     String outputName =  outputFolder.getAbsolutePath() + "/" + fileName + ".ctw";
                     BufferedWriter writer = new BufferedWriter(new FileWriter(outputName));
@@ -73,7 +38,6 @@ public class MainClass {
 
 }
 
-//throw new ParseCancellationException("Error parsing the text");
 
 
 
