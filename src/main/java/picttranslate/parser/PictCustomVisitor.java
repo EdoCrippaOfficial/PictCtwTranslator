@@ -41,7 +41,7 @@ public class PictCustomVisitor extends PictBaseVisitor{
         for (PictParser.ParamValueContext valCtx : values) {
             String s = visitParamValue(valCtx);
             stringValues.add(s);
-            line.append(s).append(" ");
+            line.append(s).append(", ");
         }
         parameters.put(paramName, stringValues);
         line.append("};");
