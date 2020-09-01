@@ -1,5 +1,5 @@
 # PictCtwTranslator
-Translate files from Pict to CTWedge
+Translates files from Pict to CTWedge
 
 ### Usage as a standalone Jar
 ```
