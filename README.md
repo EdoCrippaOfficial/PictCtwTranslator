@@ -2,7 +2,9 @@
 Translate files from Pict to CTWedge
 
 ### Usage as a standalone Jar
+```
 java -jar PictTranslate.jar "path to folder"
+```
 
 ### Usage as a Library
 ```
